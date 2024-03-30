@@ -1801,11 +1801,7 @@ setup(void)
 	XSelectInput(dpy, root, wa.event_mask);
 	grabkeys();
 	focus(NULL);
-<<<<<<< ours
 	spawnbar();
-}
-
-=======
 	setupepoll();
 }
 

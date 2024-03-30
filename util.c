@@ -27,7 +27,6 @@ die(const char *fmt, ...)
 	exit(1);
 }
 
-<<<<<<< ours
 void *
 ecalloc(size_t nmemb, size_t size)
 {
@@ -36,7 +35,6 @@ ecalloc(size_t nmemb, size_t size)
 	if (!(p = calloc(nmemb, size)))
 		die("calloc:");
 	return p;
-=======
 int
 normalizepath(const char *path, char **normal)
 {
@@ -168,5 +166,4 @@ nullterminate(char **str, size_t *len)
   (*str)[*len - 1] = '\0';
 
   return 0;
->>>>>>> theirs
 }

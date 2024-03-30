@@ -6,9 +6,6 @@ include config.mk
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
 
-<<<<<<< ours
-all: dwm
-=======
 all: options dwm dwm-msg
 
 options:
@@ -16,7 +13,6 @@ options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
->>>>>>> theirs
 
 .c.o:
 	${CC} -c ${CFLAGS} $<

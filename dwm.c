@@ -1834,7 +1834,6 @@ setupepoll(void)
 	}
 }
 
->>>>>>> theirs
 void
 seturgent(Client *c, int urg)
 {

@@ -35,6 +35,7 @@ ecalloc(size_t nmemb, size_t size)
 	if (!(p = calloc(nmemb, size)))
 		die("calloc:");
 	return p;
+}
 int
 normalizepath(const char *path, char **normal)
 {

@@ -73,22 +73,37 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_dark1, "-nf", col_dark3, "-sb", col_mauve, "-sf", col_dark4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 static const char *chatcmd[] = { "discord", NULL };
+static const char *filecmd[] = { "nautilus", NULL };
+static const char *lockcmd[] = { "slock", NULL };
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 static const char *light_up[]   = { "/usr/bin/light",   "-A", "5", NULL };
 static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
+static const char *scwhole[] = { "/home/adam/.scripts/screenshot",   "full", NULL };
+static const char *scregion[] = { "/home/adam/.scripts/screenshot", "region", NULL };
+static const char *scwindow[] = { "/home/adam/.scripts/screenshot", "window", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,  	                XK_d,	   spawn,          {.v = browsercmd} },
+	{ MODKEY|ShiftMask,  	        XK_f,	   spawn,          {.v = browsercmd} },
+	{ MODKEY|ShiftMask,  	        XK_l,	   spawn,          {.v = lockcmd} },
 	{ MODKEY|ShiftMask,             XK_d,	   spawn,          {.v = chatcmd} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_e, spawn,          {.v = filecmd} },
+	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
+	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
+	{ 0,  		                XK_Print, spawn,          {.v = scwhole} },
+	{ MODKEY,            	        XK_Print, spawn,          {.v = scregion} },
+	{ MODKEY|ShiftMask,             XK_Print, spawn,          {.v = scwindow} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -120,11 +135,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
-	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
 };
 
 /* button definitions */

@@ -87,6 +87,8 @@ static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
 static const char *scwhole[] = { "/home/adam/.scripts/screenshot",   "full", NULL };
 static const char *scregion[] = { "/home/adam/.scripts/screenshot", "region", NULL };
 static const char *scwindow[] = { "/home/adam/.scripts/screenshot", "window", NULL };
+static const char *detect_output[] = { "/home/adam/.dwm/detect_output.sh", NULL };
+static const char *touchpad_type_toggle[] = { "/home/adam/.dwm/toggle_touchpad.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -101,6 +103,8 @@ static const Key keys[] = {
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
 	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
+	{ 0,				XF86XK_Calculator,	spawn,	{.v = touchpad_type_toggle} },
+	{ 0,  		                XK_F9,	  spawn,          {.v = detect_output} },
 	{ 0,  		                XK_Print, spawn,          {.v = scwhole} },
 	{ MODKEY,            	        XK_Print, spawn,          {.v = scregion} },
 	{ MODKEY|ShiftMask,             XK_Print, spawn,          {.v = scwindow} },
